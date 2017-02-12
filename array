@@ -1,4 +1,39 @@
-//C++数组排序
+//插入排序
+#include<iostream>
+using namespace std;
+void isort(int *a, int size);
+int main()
+{
+	int array[] = { 55,2,6,4,32,12,9,73,26,37 };
+	int len = sizeof(array) / sizeof(int);
+	for (int i = 0; i < len; i++)
+		cout << array[i] << ",";
+	cout << endl << endl;
+	isort(array, len);
+}
+void isort(int a[], int size)
+{
+	int inserter, index;
+	for (int i = 1; i < size; i++)
+	{
+		inserter = a[i];
+		index = i - 1;
+		while (index >= 0 && inserter < a[index])
+		{
+			a[index + 1] = a[index];
+			index--;
+		}
+
+		a[index + 1] = inserter;
+		for (int j = 0; j < size; j++)
+		{
+			cout << a[j] << ",";
+			if (j == i)
+				cout << '|';
+		}
+		cout << endl;
+	}
+}//C++数组排序
 //1.冒泡排序
 #include<iostream>
 using namespace std;
