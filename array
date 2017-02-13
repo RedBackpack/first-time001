@@ -67,3 +67,37 @@ void bubble(int a[], int size)//冒泡排序
 
 	}
 }
+
+/快速排序【quick sort】选取中间项的值作为中间值
+#include<iostream>
+using namespace std;
+
+void qsort(int[], int, int);
+void swap(int&a, int&b) { int t = a; a = b; b = t; }
+
+int main()
+{
+	int a[] = { 55,2,6,4,11,1,29,73,26,37 };
+	int len = sizeof(a) / sizeof(int);//长度
+	for (int i = 0; i < len; i++)
+		cout << a[i] << ",";//原始顺序输出
+	cout << "\n\n";//换行换行
+	qsort(a, 0, len - 1);//调用排序函数
+	for (int i = 0; i < len; i++)
+		cout << a[i] << ",";
+	cout << "\n";
+}
+void qsort(int a[], int left, int right)
+{
+	int pivot = a[right], l = left, r = right;//pivot中心点，定义一个中心点
+		while (l < r)//这样左边肯定小于右边
+		{
+			swap(a[l], a[r]);//引用函数
+			while (l<r&&a[r]>pivot) --r;//当a[r]大于中心点的时候，r自减
+			while (l < r&&a[l] <= pivot) ++l;//当a[l]小于等于中心点的时候，l自增
+		}
+		swap(a[l], a[r]);//使a[r]变为分界源
+		if (l < r - 1) qsort(a, l, r - 1);
+		if (r + 1 < r) qsort(a, r + 1, r);
+	}
+
