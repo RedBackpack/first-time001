@@ -68,7 +68,7 @@ void bubble(int a[], int size)//冒泡排序
 	}
 }
 
-/快速排序【quick sort】选取中间项的值作为中间值
+/快速排序【quick sort】选取中间项的值作为中间值,然后左右比大小换顺序，小在前大在后
 #include<iostream>
 using namespace std;
 
